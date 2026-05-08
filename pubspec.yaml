@@ -1,0 +1,65 @@
+name: flousi
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.1+2
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  supabase_flutter: ^2.5.0
+  font_awesome_flutter: ^10.7.0
+  flutter_svg: ^2.2.4
+  shared_preferences: ^2.5.2
+  intl: ^0.20.2
+  flutter_local_notifications: ^17.2.2
+  in_app_purchase: ^3.2.0
+  image_picker: ^1.1.2
+  timezone: ^0.9.4
+  google_generative_ai: ^0.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/AppLogo/logo.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/Animal/
+    - assets/
+    - assets/AppLogo/
+
+  fonts:
+    - family: CynthoNext
+      fonts:
+        - asset: assets/Fonts/CynthoNextThin.otf
+          weight: 100
+        - asset: assets/Fonts/CynthoNextExtraLight.otf
+          weight: 200
+        - asset: assets/Fonts/CynthoNextLight.otf
+          weight: 300
+        - asset: assets/Fonts/CynthoNextRegular.otf
+          weight: 400
+        - asset: assets/Fonts/CynthoNextMedium.otf
+          weight: 500
+        - asset: assets/Fonts/CynthoNextSemiBold.otf
+          weight: 600
+        - asset: assets/Fonts/CynthoNextBold.otf
+          weight: 700
+        - asset: assets/Fonts/CynthoNextExtraBold.otf
+          weight: 800
