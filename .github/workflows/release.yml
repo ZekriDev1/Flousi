@@ -1,0 +1,42 @@
+name: Build and Release IPA
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers when you push a tag like v1.0, v1.1, etc.
+
+jobs:
+  release:
+    name: Build and Release
+    runs-on: macos-latest
+    permissions:
+      contents: write # Essential for creating releases
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build IPA
+        run: flutter build ipa --release --no-codesign
+
+      - name: Debug - List build files
+        run: find build/ios/ipa -name "*.ipa"
+
+      - name: Upload Release Asset
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/ios/ipa/*.ipa
+          tag: ${{ github.ref_name }}
+          overwrite: true
+          body: "Release build for version ${{ github.ref_name }}"
+          file_glob: true
